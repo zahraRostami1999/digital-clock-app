@@ -30,6 +30,7 @@ function Clock(){
         <>
         <div className={styles.clockContainer}>
             <span>{formatTime()}</span>
+            <button><a href="/stopWatch">Stop Watch</a></button>
         </div>
         </>
     );
