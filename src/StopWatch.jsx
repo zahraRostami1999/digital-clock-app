@@ -37,19 +37,25 @@ function StopWatch() {
     const hours = Math.floor(elapsedTime / (1000 * 60 * 60));
     const minutes = Math.floor(elapsedTime / (1000 * 60) % 60);
     const secunds = Math.floor(elapsedTime / (1000) % 60);
-    const miliseconds = Math.floor((elapsedTime % 1000) /10)
+    const miliseconds = Math.floor((elapsedTime % 1000) / 10)
 
     return `${hours}:${minutes}:${secunds}:${miliseconds}`;
   };
 
   return (
     <>
-      <div>
-        <h1>Stop Watch</h1>
-        <h3>{formatTime()}</h3>
-        <button onClick={startHandle}>Start</button>
-        <button onClick={handleStop}>Stop</button>
-        <button onClick={handleReset}>Reset</button>
+      <div className={styles.container}>
+        <div>
+          <h1>Stop Watch</h1>
+          <h3>{formatTime()}</h3>
+          <div className={styles.btns}>
+            <button className={styles.startBtn} onClick={startHandle}>Start</button>
+            <button className={styles.stopBtn} onClick={handleStop}>Stop</button>
+            <button className={styles.resetBtn} onClick={handleReset}>Reset</button>
+          </div>
+          <button className={styles.backBtn}><a href="/">Back</a></button>
+        </div>
+
       </div>
     </>
   );
