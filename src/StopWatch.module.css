@@ -183,8 +183,9 @@
 
 @media (max-width: 500px) {
    .stopwatchTime {
-   font-size: clamp(2rem, 10vw, 5rem);
+      font-size: 3.1rem;
       letter-spacing: 0.08em;
+      font-weight: bold;
    }
    .btns {
       flex-direction: row;
