@@ -93,7 +93,7 @@
 
 @media (max-width: 768px) {
   .clockContainer {
-      margin-top: 120px;
+    margin-top: 75px;
     padding: 3rem 1rem;
     border-radius: 26px;
   }

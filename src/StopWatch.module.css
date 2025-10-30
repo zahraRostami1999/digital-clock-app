@@ -183,7 +183,7 @@
 
 @media (max-width: 500px) {
    .stopwatchTime {
-      font-size: clamp(6rem, 10vw, 5rem);
+   font-size: clamp(2rem, 10vw, 5rem);
       letter-spacing: 0.08em;
    }
    .btns {
