@@ -1,63 +1,60 @@
 import styles from "./StopWatch.module.css";
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 function StopWatch() {
   const [elapsedTime, setElapsedTime] = useState(0);
-  const [start, setStart] = useState(false);
-  const startTime = useRef(0);
-  const intervalId = useRef(null);
+  const [isRunning, setIsRunning] = useState(false);
+  const startTimeRef = useRef(0);
+  const intervalRef = useRef(null);
 
   useEffect(() => {
-    if (start) {
-      intervalId.current = setInterval(() => {
-        setElapsedTime(Date.now() - startTime.current);
+    if (isRunning) {
+      intervalRef.current = setInterval(() => {
+        setElapsedTime(Date.now() - startTimeRef.current);
       }, 10);
     } else {
-      clearInterval(intervalId.current);
+      clearInterval(intervalRef.current);
     }
-  }, [start]);
+    return () => clearInterval(intervalRef.current);
+  }, [isRunning]);
 
-  const startHandle = () => {
-    setStart(true);
-    startTime.current = Date.now() - elapsedTime;
+  const start = () => {
+    setIsRunning(true);
+    startTimeRef.current = Date.now() - elapsedTime;
   };
 
-  const handleStop = () => {
-    setStart(false);
-    clearInterval(intervalId.current);
-  };
+  const stop = () => setIsRunning(false);
 
-  const handleReset = () => {
+  const reset = () => {
     setElapsedTime(0);
-    setStart(false);
-    clearInterval(intervalId.current);
+    setIsRunning(false);
   };
 
   const formatTime = () => {
-    const hours = Math.floor(elapsedTime / (1000 * 60 * 60));
-    const minutes = Math.floor(elapsedTime / (1000 * 60) % 60);
-    const secunds = Math.floor(elapsedTime / (1000) % 60);
-    const miliseconds = Math.floor((elapsedTime % 1000) / 10)
-
-    return `${hours}:${minutes}:${secunds}:${miliseconds}`;
+    const hours = String(Math.floor(elapsedTime / (1000 * 60 * 60))).padStart(2, '0');
+    const minutes = String(Math.floor((elapsedTime / (1000 * 60)) % 60)).padStart(2, '0');
+    const seconds = String(Math.floor((elapsedTime / 1000) % 60)).padStart(2, '0');
+    const milliseconds = String(Math.floor((elapsedTime % 1000) / 10)).padStart(2, '0');
+    return { hours, minutes, seconds, milliseconds };
   };
 
-  return (
-    <>
-      <div className={styles.container}>
-        <div>
-          <h1>Stop Watch</h1>
-          <h3>{formatTime()}</h3>
-          <div className={styles.btns}>
-            <button className={styles.startBtn} onClick={startHandle}>Start</button>
-            <button className={styles.stopBtn} onClick={handleStop}>Stop</button>
-            <button className={styles.resetBtn} onClick={handleReset}>Reset</button>
-          </div>
-          <button className={styles.backBtn}><a href="/">Back</a></button>
-        </div>
+  const { hours, minutes, seconds, milliseconds } = formatTime();
 
+  return (
+    <div className={styles.container}>
+      <div className={styles.stopwatchTime}>
+        {hours}:{minutes}:{seconds}
       </div>
-    </>
+
+      <div className={styles.btns}>
+        <button className={styles.startBtn} onClick={start}>Start</button>
+        <button className={styles.stopBtn} onClick={stop}>Stop</button>
+        <button className={styles.resetBtn} onClick={reset}>Reset</button>
+      </div>
+
+      <Link to="/" className={styles.backBtn}>Back</Link>
+    </div>
   );
 }
 
