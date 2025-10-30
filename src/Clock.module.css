@@ -94,7 +94,6 @@
 
 @media (max-width: 768px) {
    .clockContainer {
-      width: 93%;
       margin-top: 75px;
       padding: 3rem 1rem;
       border-radius: 26px;
@@ -104,7 +103,12 @@
    }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 500px) {
+   .clockContainer {
+      margin-top: 75px;
+      padding: 3rem 1rem;
+      border-radius: 26px;
+   }
    .digitalTime {
       font-weight: bold;
       font-size: 3.1rem;
