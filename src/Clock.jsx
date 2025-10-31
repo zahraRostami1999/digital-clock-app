@@ -26,10 +26,6 @@ function Clock() {
       <div className={styles.digitalTime}>
         {h}:{m}:<span className={styles.second}>{s}</span>
       </div>
-      
-      <Link to="/stopWatch" className={styles.navButton}>
-        Stop Watch
-      </Link>
     </div>
   );
 }

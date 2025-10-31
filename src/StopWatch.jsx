@@ -52,8 +52,6 @@ function StopWatch() {
         <button className={styles.stopBtn} onClick={stop}>Stop</button>
         <button className={styles.resetBtn} onClick={reset}>Reset</button>
       </div>
-
-      <Link to="/" className={styles.backBtn}>Back</Link>
     </div>
   );
 }

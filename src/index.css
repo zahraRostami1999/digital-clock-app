@@ -23,8 +23,9 @@ html, body {
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  flex-direction: column;  
+  justify-content: flex-start; 
+  align-items: center;      
 }
 
 body {
@@ -42,3 +43,48 @@ code {
 }
 
 
+.tabsContainer {
+  width: 92%;
+  max-width: 650px;
+  margin: 10px auto 0 auto;
+  padding: 8px;
+  background: rgba(255, 245, 240, 0.18);
+  backdrop-filter: blur(12px);
+  border: 1.2px solid rgba(255, 200, 180, 0.25);
+  border-radius: 22px;
+  display: flex;
+  justify-content: space-around;
+  box-shadow: 0 6px 20px rgba(255, 140, 100, 0.15),
+              inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.tab {
+  font-family: "Poppins", sans-serif;
+  padding: 10px 24px;
+  border-radius: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all .3s;
+  color: #fd8c6a;
+  background: rgba(255, 220, 200, 0.15);
+  border: 1.2px solid rgba(255, 160, 120, 0.25);
+  text-decoration: none;
+  text-align: center;
+}
+
+.tab:hover {
+  background: rgba(255, 200, 180, 0.33);
+  transform: translateY(-2px);
+  color: #fff;
+  box-shadow: 0 5px 14px rgba(255, 140, 100, 0.25);
+}
+
+.activeTab {
+  background: rgba(255, 200, 180, 0.5);
+  border: 1.5px solid rgba(255, 150, 110, 0.35);
+  color: white;
+  box-shadow: 0 6px 16px rgba(255, 140, 100, 0.3);
+}
